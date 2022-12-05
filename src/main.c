@@ -10,9 +10,9 @@ int main() {
   char protossFleet[buffSize];
   TakeInputData(terranFleet, protossFleet, buffSize);
 
-  // BattleField battleField;
-  // generateTerranFleet(&battleField, terranFleet);
-  // generateProtossFleet(&battleField, protossFleet);
+  BattleField battleField;
+  generateTerranFleet(&battleField, terranFleet);
+  generateProtossFleet(&battleField, protossFleet);
   // startBattle(&battleField);
   // deinit(&battleField);
 

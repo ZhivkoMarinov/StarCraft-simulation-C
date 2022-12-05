@@ -1,9 +1,21 @@
 #ifndef DEFINES_H_
 #define DEFINES_H_
 
+typedef struct BaseTerranShip{
+  int health;
+  int ID;
+}BaseTerranShip;
+
+typedef struct BaseProtossShip{
+  int health;
+  int ID;
+  int shield;
+}BaseProtossShip;
+
+
 enum AirShipDefines {
   BATTLE_CRUSER_HEALTH = 450,
-  BATTLE_BRUSER_DAMAGE = 40,
+  BATTLE_CRUSER_DAMAGE = 40,
 
   VIKING_HEALTH = 150,
   VIKING_DAMAGE = 15,
