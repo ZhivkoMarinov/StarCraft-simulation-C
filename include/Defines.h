@@ -10,6 +10,7 @@ typedef struct BaseProtossShip{
   int health;
   int ID;
   int shield;
+  int shieldRegen;
 }BaseProtossShip;
 
 
