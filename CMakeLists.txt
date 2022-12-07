@@ -14,11 +14,15 @@ add_executable(
         ${INC_DIR}/Vector.h
         ${INC_DIR}/BattleField.h
         ${INC_DIR}/ProcessInput.h
+        ${INC_DIR}/Protoss.h
+        ${INC_DIR}/Terran.h
         
         ${SRC_DIR}/main.c
         ${SRC_DIR}/Vector.c
         ${SRC_DIR}/BattleField.c
         ${SRC_DIR}/ProcessInput.c
+        ${SRC_DIR}/Protoss.c
+        ${SRC_DIR}/Terran.c
 )
 
 target_include_directories(

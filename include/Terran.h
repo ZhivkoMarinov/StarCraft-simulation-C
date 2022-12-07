@@ -13,5 +13,6 @@ typedef struct BattleCruiser{
     short int yamatoCount;
 }BattleCruiser;
 
+BattleCruiser *battleCruiserInit();
 
 #endif /* TERRAN_H_ */

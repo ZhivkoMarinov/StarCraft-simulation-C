@@ -4,13 +4,15 @@
 #include "Defines.h"
 #include "stdbool.h"
 
-typedef struct phoenix{
+typedef struct Phoenix{
     BaseProtossShip *baseShip;    
-}phoenix;
+}Phoenix;
 
-typedef struct carrier{
+typedef struct Carrier{
     BaseProtossShip *baseShip;
     bool isHealthFull;
-}carrier;
+}Carrier;
+
+Carrier *carrierInit();
 
 #endif /* PROTOSS_H_ */

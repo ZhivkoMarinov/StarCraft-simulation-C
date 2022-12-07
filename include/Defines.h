@@ -4,11 +4,13 @@
 typedef struct BaseTerranShip{
   int health;
   int ID;
+  int type;
 }BaseTerranShip;
 
 typedef struct BaseProtossShip{
   int health;
   int ID;
+  int type;
   int shield;
   int shieldRegen;
 }BaseProtossShip;

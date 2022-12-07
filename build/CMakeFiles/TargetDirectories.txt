@@ -1,0 +1,3 @@
+/home/zhivkojujo/Desktop/mystaff/C_exercise/StarCraft-simulation-C/build/CMakeFiles/starcraft.dir
+/home/zhivkojujo/Desktop/mystaff/C_exercise/StarCraft-simulation-C/build/CMakeFiles/edit_cache.dir
+/home/zhivkojujo/Desktop/mystaff/C_exercise/StarCraft-simulation-C/build/CMakeFiles/rebuild_cache.dir
