@@ -40,6 +40,12 @@ void generateProtossFleet(BattleField *battleField, const char *protossFleetStr)
       newCarrier = carrierInit(i);
       vectorPush(&(battleField->protossFleet), newCarrier);
       break;
+
+    case 'p':
+      Phoenix *newPhoenix = NULL;
+      newPhoenix = phoenixInit(i);
+      vectorPush(&(battleField->protossFleet), newPhoenix);
+      break;
     
     default:
       break;
