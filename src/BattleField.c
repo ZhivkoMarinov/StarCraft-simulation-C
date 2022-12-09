@@ -17,7 +17,11 @@ void generateTerranFleet(BattleField *battleField, const char *terranFleetStr) {
       BattleCruiser *newBattleCruiser = NULL;
       newBattleCruiser = battleCruiserInit(i);
       vectorPush(&(battleField->terranFleet), newBattleCruiser);
-      break;      
+      break;
+    case 'v':
+      Viking *newViking = NULL;
+      newViking = vikingInit(i);
+      vectorPush(&(battleField->terranFleet), newViking);
     default:
       break;
     }

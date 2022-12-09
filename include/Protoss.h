@@ -13,6 +13,7 @@ typedef struct Carrier{
     bool isHealthFull;
 }Carrier;
 
-Carrier *carrierInit();
+Carrier *carrierInit(int id);
+Phoenix *phoenixInit(int id);
 
 #endif /* PROTOSS_H_ */
