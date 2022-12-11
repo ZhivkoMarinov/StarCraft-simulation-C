@@ -15,7 +15,6 @@ typedef struct BaseProtossShip{
   int shieldRegen;
 }BaseProtossShip;
 
-
 enum AirShipDefines {
   BATTLE_CRUSER_HEALTH = 450,
   BATTLE_CRUSER_DAMAGE = 40,
@@ -34,7 +33,7 @@ enum AirShipDefines {
   PHOENIX_SHIELD_REGENERATE_RATE = 20
 };
 
-enum AirShipType {
+enum TerranAirShipType {
   BATTLE_CRUSER, VIKING, CARRIER, PHOENIX
 };
 

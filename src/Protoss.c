@@ -2,27 +2,59 @@
 #include <stdlib.h>
 #include "Defines.h"
 #include "Protoss.h"
+#include "Terran.h"
 
-Carrier *carrierInit(int id){
-    Carrier *newCarrier = malloc(sizeof(Carrier));
-    newCarrier->isHealthFull = true;
-    newCarrier->baseShip = malloc(sizeof(BaseProtossShip));
-    newCarrier->baseShip->health = CARRIER_HEALTH;
-    newCarrier->baseShip->shield = CARRIER_SHIELD;
-    newCarrier->baseShip->shieldRegen = CARRIER_SHIELD_REGENERATE_RATE;
-    newCarrier->baseShip->ID = id;
-    newCarrier->baseShip->type = CARRIER;
-    return newCarrier;
+BaseProtossShip *protossShipInit(int id, int type, int health, int shield, int shieldRegen){
+    BaseProtossShip *protossShip = malloc(sizeof(BaseProtossShip));
+    if(protossShip == NULL){
+        printf("Failed to alloc memory!");
+        exit(-1);
+    }
+    protossShip->health = health;
+    protossShip->ID = id;
+    protossShip->shield = shield;
+    protossShip->shieldRegen = shieldRegen;
+    protossShip->type = type;
+    return protossShip;
 }
 
-Phoenix *phoenixInit(int id){
-    Phoenix *newPhenix = malloc(sizeof(Phoenix));
-    newPhenix->baseShip = malloc(sizeof(BaseProtossShip));
-    newPhenix->baseShip->health = PHOENIX_HEALTH;
-    newPhenix->baseShip->ID = id;
-    newPhenix->baseShip->shield = PHOENIX_SHIELD;
-    newPhenix->baseShip->shieldRegen = PHOENIX_SHIELD_REGENERATE_RATE;
-    newPhenix->baseShip->type = PHOENIX;
-    return newPhenix;
+void protossAttack(BaseProtossShip *currentShip, Vector *terranFleet){
+    int damage = 0;
+    BaseTerranShip *enemy = NULL;
+    if(currentShip->type == CARRIER){
+        printf("Protoss atack\n");
+        damage = CARRIER_DAMAGE;
+        int attacksCount = 0;
+        attacksCount = (currentShip->health == CARRIER_HEALTH) ? 8 : 4;
+        for(int i = 0; i < attacksCount; i++){
+            enemy = vectorBack(terranFleet);
+            terranTakeDamage(enemy, damage, terranFleet);
+        }
+    }
+    else{
+        damage = PHOENIX_DAMAGE;
+        enemy = vectorBack(terranFleet);
+        terranTakeDamage(enemy, damage, terranFleet);
+    }
+}
 
+void protossTakeDamage(BaseProtossShip *currentShip, int damage, Vector *protossFleet){
+    int total_dmg = currentShip->shield - damage;
+    if(total_dmg >= 0){
+        currentShip->shield = total_dmg;
+        printf("Protoss Ship with ID %d has %d health and %d shield\n", currentShip->ID, currentShip->health, currentShip->shield);
+        return;
+    }
+    currentShip->shield = 0;
+    currentShip->health += total_dmg;
+    printf("Protoss Ship with ID %d has %d health and %d shield\n", currentShip->ID, currentShip->health, currentShip->shield);
+    if(currentShip->health <= 0){
+        vectorPop(protossFleet);
+    }
+}
+
+void shieldRegen(BaseProtossShip *lastShip){
+    int maxShield = 0;
+    maxShield = (lastShip->type == CARRIER) ? CARRIER_SHIELD : PHOENIX_SHIELD;
+    lastShip->shield = (lastShip->shield + lastShip->shieldRegen > maxShield) ? maxShield : lastShip->shield + lastShip->shieldRegen;
 }

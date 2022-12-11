@@ -2,18 +2,9 @@
 #define TERRAN_H_
 
 #include "Defines.h"
+#include "Vector.h"
 
-typedef struct Viking{
-    BaseTerranShip *baseShip;
-    short int damage_multiplyer;
-}Viking;
-
-typedef struct BattleCruiser{
-    BaseTerranShip *baseShip;
-    short int yamatoCount;
-}BattleCruiser;
-
-BattleCruiser *battleCruiserInit(int id);
-Viking *vikingInit(int id);
-
+BaseTerranShip *terranShipInit(int id, int type, int health);
+void terranAttack(BaseTerranShip *currentShip, Vector *protossFleet, int round);
+void terranTakeDamage(BaseTerranShip *currentShip, int damage, Vector *terranFleet);
 #endif /* TERRAN_H_ */

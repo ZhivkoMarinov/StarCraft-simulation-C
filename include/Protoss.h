@@ -2,18 +2,11 @@
 #define PROTOSS_H_
 
 #include "Defines.h"
-#include "stdbool.h"
+#include "Vector.h"
 
-typedef struct Phoenix{
-    BaseProtossShip *baseShip;    
-}Phoenix;
-
-typedef struct Carrier{
-    BaseProtossShip *baseShip;
-    bool isHealthFull;
-}Carrier;
-
-Carrier *carrierInit(int id);
-Phoenix *phoenixInit(int id);
+BaseProtossShip *protossShipInit(int id, int type, int health, int shield, int shieldRegen);
+void protossAttack(BaseProtossShip *currentShip, Vector *protossFleet);
+void protossTakeDamage(BaseProtossShip *currentShip, int damage, Vector *protossFleet);
+void shieldRegen(BaseProtossShip *lastShip);
 
 #endif /* PROTOSS_H_ */

@@ -13,7 +13,8 @@ int main() {
   BattleField battleField;
   generateTerranFleet(&battleField, terranFleet);
   generateProtossFleet(&battleField, protossFleet);
-  // startBattle(&battleField);
+  
+  startBattle(&battleField);
   // deinit(&battleField);
 
   return EXIT_SUCCESS;
