@@ -43,7 +43,7 @@ enum CarrierDefines {
 };
 
 enum BattleCruserDefines {
-  YAMATO_CANNON_LOADING_TURNS = 4
+  YAMATO_CANNON_LOADING_TURNS = 5
 };
 
 #endif /* DEFINES_H_ */

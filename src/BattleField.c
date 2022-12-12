@@ -91,7 +91,7 @@ bool processProtossTurn(BattleField *battleField){
     BaseProtossShip *currentShip = vectorGet(&(battleField->protossFleet), ship);
     protossAttack(currentShip, &(battleField->terranFleet));
 
-    if(battleField->protossFleet.size == 0){
+    if(battleField->terranFleet.size == 0){
       return true;
     } 
   }
@@ -100,8 +100,3 @@ bool processProtossTurn(BattleField *battleField){
 
 // void deinit(BattleField *battleField) {
 // }
-
-// bool processProtossTurn(BattleField *battleField) {
-//   return false;
-// }
-

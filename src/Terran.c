@@ -21,7 +21,6 @@ void terranAttack(BaseTerranShip *currentShip, Vector *protossFleet, int round){
     if(currentShip->type == BATTLE_CRUSER){
         printf("Terran atack\n");
         if(round % YAMATO_CANNON_LOADING_TURNS == 0){
-            printf("TUK!\n");
             damage = BATTLE_CRUSER_DAMAGE * 5;
         }
         else{
