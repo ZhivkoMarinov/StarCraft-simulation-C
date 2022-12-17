@@ -19,7 +19,6 @@ void terranAttack(BaseTerranShip *currentShip, Vector *protossFleet, int round){
     int damage = 0;
     BaseProtossShip *enemy = vectorBack(protossFleet);
     if(currentShip->type == BATTLE_CRUSER){
-        printf("Terran atack\n");
         if(round % YAMATO_CANNON_LOADING_TURNS == 0){
             damage = BATTLE_CRUSER_DAMAGE * 5;
         }
@@ -37,10 +36,8 @@ void terranAttack(BaseTerranShip *currentShip, Vector *protossFleet, int round){
 void terranTakeDamage(BaseTerranShip *currentShip, int damage, Vector *terranFleet){
     if(currentShip->health > damage){
         currentShip->health -= damage;
-        printf("Terran Ship with ID %d has %d health\n", currentShip->ID, currentShip->health);
         return;
     }
     currentShip->health = 0;
-    printf("Terran Ship with ID %d has %d health\n", currentShip->ID, currentShip->health);
     vectorPop(terranFleet);
 }

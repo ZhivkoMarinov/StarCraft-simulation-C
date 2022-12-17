@@ -22,7 +22,6 @@ void protossAttack(BaseProtossShip *currentShip, Vector *terranFleet){
     int damage = 0;
     BaseTerranShip *enemy = NULL;
     if(currentShip->type == CARRIER){
-        printf("Protoss atack\n");
         damage = CARRIER_DAMAGE;
         int attacksCount = 0;
         attacksCount = (currentShip->health == CARRIER_HEALTH) ? 8 : 4;
@@ -42,12 +41,10 @@ void protossTakeDamage(BaseProtossShip *currentShip, int damage, Vector *protoss
     int total_dmg = currentShip->shield - damage;
     if(total_dmg >= 0){
         currentShip->shield = total_dmg;
-        printf("Protoss Ship with ID %d has %d health and %d shield\n", currentShip->ID, currentShip->health, currentShip->shield);
         return;
     }
     currentShip->shield = 0;
     currentShip->health += total_dmg;
-    printf("Protoss Ship with ID %d has %d health and %d shield\n", currentShip->ID, currentShip->health, currentShip->shield);
     if(currentShip->health <= 0){
         vectorPop(protossFleet);
     }
