@@ -39,5 +39,6 @@ void terranTakeDamage(BaseTerranShip *currentShip, int damage, Vector *terranFle
         return;
     }
     currentShip->health = 0;
+    free(currentShip);
     vectorPop(terranFleet);
 }

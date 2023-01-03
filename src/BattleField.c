@@ -66,18 +66,22 @@ void startBattle(BattleField *battleField) {
     //roundStatus(battleField, round);
     round++;
   }
+  deinit(battleField);
+  vectorFree(&(battleField->protossFleet));
+  vectorFree(&(battleField->terranFleet));
 }
 
 bool processTerranTurn(BattleField *battleField, int round){
   int fleetSize = battleField->terranFleet.size;
+  BaseProtossShip *enemy = NULL;
   for(int ship = 0; ship < fleetSize; ship++){
     BaseTerranShip *currentShip = vectorGet(&(battleField->terranFleet), ship);
+    enemy = vectorBack(&(battleField->protossFleet));
     terranAttack(currentShip, &(battleField->protossFleet), round);
     if(battleField->protossFleet.size == 0){
       return true;
     }
-  }
-  BaseProtossShip *enemy = vectorBack(&(battleField->protossFleet));
+  }    
   printf("Last Protoss AirShip with ID: %d has %d health and %d shield left\n", enemy->ID, enemy->health, enemy->shield);
   return false;
 }
@@ -89,17 +93,29 @@ bool processProtossTurn(BattleField *battleField){
 
   //proccess attacks
   int fleetSize = battleField->protossFleet.size;
+  BaseTerranShip *enemy = NULL;
   for(int ship = 0; ship < fleetSize; ship++){
     BaseProtossShip *currentShip = vectorGet(&(battleField->protossFleet), ship);
+    enemy = vectorBack(&(battleField->terranFleet));
     protossAttack(currentShip, &(battleField->terranFleet));
     if(battleField->terranFleet.size == 0){
       return true;
     }
-    BaseTerranShip *enemy = vectorBack(&(battleField->terranFleet));
-    printf("Last Terran AirShip with ID: %d has %d health left\n", enemy->ID, enemy->health);
   }
+  printf("Last Terran AirShip with ID: %d has %d health left\n", enemy->ID, enemy->health);
   return false;
 }
 
-// void deinit(BattleField *battleField) {
-// }
+void deinit(BattleField *battleField){
+  if(battleField->protossFleet.size > 0){
+    for(size_t i = 0; i < battleField->protossFleet.size; i++){
+      free(battleField->protossFleet.items[i]);
+    }
+  }
+
+  if(battleField->terranFleet.size > 0){
+    for(size_t i = 0; i < battleField->terranFleet.size; i++){
+      free(battleField->terranFleet.items[i]);
+    }
+  }
+}

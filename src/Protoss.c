@@ -26,6 +26,7 @@ void protossAttack(BaseProtossShip *currentShip, Vector *terranFleet){
         int attacksCount = 0;
         attacksCount = (currentShip->health == CARRIER_HEALTH) ? 8 : 4;
         for(int i = 0; i < attacksCount; i++){
+            if(terranFleet->size == 0) break;
             enemy = vectorBack(terranFleet);
             terranTakeDamage(enemy, damage, terranFleet);
         }
@@ -46,6 +47,7 @@ void protossTakeDamage(BaseProtossShip *currentShip, int damage, Vector *protoss
     currentShip->shield = 0;
     currentShip->health += total_dmg;
     if(currentShip->health <= 0){
+        free(currentShip);
         vectorPop(protossFleet);
     }
 }

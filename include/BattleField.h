@@ -16,5 +16,6 @@ void startBattle(BattleField *battleField);
 void deinit(BattleField *battleField);
 bool processTerranTurn(BattleField *battleField, int round);
 bool processProtossTurn(BattleField *battleField);
+void deinit(BattleField *battleField);
 
 #endif /* BATTLEFIELD_H_ */
